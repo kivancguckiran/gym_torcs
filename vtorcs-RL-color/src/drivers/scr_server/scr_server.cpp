@@ -575,8 +575,8 @@ if (RESTARTING[index]==0)
     // Set timeout for client answer
     FD_ZERO(&readSet);
     FD_SET(listenSocket[index], &readSet);
-    timeVal.tv_sec = 0;
-    timeVal.tv_usec = UDP_TIMEOUT;
+    timeVal.tv_sec = 1; // 0;
+    timeVal.tv_usec = 0; // UDP_TIMEOUT;
     memset(line, 0x0,UDP_MSGLEN ); // GIUSE - BUG, THERE WAS A 1000 HARDCODED
 
     if (select(listenSocket[index]+1, &readSet, NULL, NULL, &timeVal))
